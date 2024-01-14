@@ -9,34 +9,6 @@ const EmployerDashboard = () => {
     // Mock Data for Jobs
     const [jobs, setJobs] = useState([
         {
-            id: 1,
-            title: 'Frontend Developer',
-            company: 'Tech Corp',
-            location: 'Addis Ababa',
-            minSalary: 5000,
-            maxSalary: 8000,
-            skillsRequired: ['HTML', 'CSS', 'JavaScript', 'React'],
-            description: 'We are looking for a skilled frontend developer. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestias, tempore. Modi veritatis tempora explicabo numquam itaque quis, vitae maxime soluta, quibusdam saepe sunt aliquid dignissimos? Quisquam, quidem. ',
-            applicants: [
-                {
-                    id: 1,
-                    name: 'John Doe',
-                    email: 'john.doe@example.com',
-                    skills: ['HTML', 'CSS', 'React', 'Redux'],
-                    cvLink: 'https://example.com/john-cv.pdf',
-                    coverLetter: 'I am passionate about building beautiful UIs and robust applications. Hire me!  I am passionate about building beautiful UIs and robust applications. Hire me! I am passionate about building beautiful UIs and robust applications. Hire me! ',
-                },
-                {
-                    id: 2,
-                    name: 'Jane Smith',
-                    email: 'jane.smith@example.com',
-                    skills: ['JavaScript', 'Tailwind CSS', 'React'],
-                    cvLink: 'https://example.com/jane-cv.pdf',
-                    coverLetter: 'I bring experience and creativity to frontend development projects.',
-                },
-            ],
-        },
-        {
             id: 2,
             title: 'Backend Developer',
             company: 'Soft Innovations',
