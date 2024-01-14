@@ -5,7 +5,6 @@ const SideFilter = () => {
     <div className="relative">
         <div className='flex flex-col gap-2  py-2 px-5 rounded-md h-full'>
         <p className='font-bold'>Job type</p>
-        {/* check boxes here */}
         <label className='flex items-center gap-2'>
             <input type="checkbox" />
             Full Time
@@ -36,7 +35,9 @@ const SideFilter = () => {
             <option value="">$50k - $100k</option>
             <option value="">$100k+</option>
         </select>
+
         <p className='font-bold'>Experience level</p>
+
         {/* checkboxes */}
         <label className='flex items-center gap-2' >
             <input type="checkbox" />
@@ -47,6 +48,7 @@ const SideFilter = () => {
             className='border border-gray-300 rounded-md'
             />
             Mid level
+
         </label>
         <label className='flex items-center gap-2'>
             <input type="checkbox" />
