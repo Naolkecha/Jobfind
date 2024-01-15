@@ -29,15 +29,16 @@ const JobDetail = () => {
 
     return (
         <div className="p-6 max-w-4xl mx-auto bg-white shadow-md rounded-lg">
-            {/* Job Details */}
+         
             <div className=' mb-7'>
                 <div className='flex justify-between items-center mb-4'>
             <h1 className="text-xl font-bold mb-4">Job Title (Job ID: {job_id})</h1>
-            <p className='text-sm'>Posted: Dec 16, 2024</p>
+            <p className='text-sm'>Posted on: Dec 16, 2024</p>
             </div>
             <p className="text-gray-700 mb-2">
                Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam, neque quaerat repellat consequatur deleniti ex a eius et quod. Ab, sapiente facere assumenda excepturi pariatur neque deleniti doloremque et aut commodi voluptatibus ex hic, architecto explicabo voluptatum cupiditate distinctio. Neque sint earum similique quod eaque architecto fugit sapiente repellendus recusandae.
             </p>
+
 
             skills: <span className="text-blue-500">React, Node.js, Express</span>
 
@@ -49,10 +50,9 @@ const JobDetail = () => {
                 <strong>Job Type:</strong> Full Time <br />
             </p>
              <p>
-
                 <FontAwesomeIcon icon={faLocationPin} className="mr-2 text-red-500" />
                
-                <strong>Location:</strong> Addis Ababa
+            <strong>Location:</strong> Addis Ababa
             </p>
             </div>
 
