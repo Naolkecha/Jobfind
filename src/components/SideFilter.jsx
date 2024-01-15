@@ -49,6 +49,8 @@ const SideFilter = () => {
             />
             Mid level
 
+            
+
         </label>
         <label className='flex items-center gap-2'>
             <input type="checkbox" />
