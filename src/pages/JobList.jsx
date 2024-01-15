@@ -4,16 +4,7 @@ import JobCard from '../components/JobCard';
 
 const JobList = () => {
     const jobs = [
-      
-        {
-            job_id: 2,
-            posted: '1 day ago',
-            title: 'Frontend Developer',
-            description: 'We are seeking a talented Frontend Developer to create visually stunning, responsive web applications. You will work closely with designers and backend developers to implement user-friendly interfaces. Proficiency in React, CSS, and JavaScript is required. This role offers a unique opportunity to shape the look and feel of our platform.',
-            experience: 'Mid level',
-            salary: '20k',
-            type: 'Full time',
-        },
+     
         {
             job_id: 3,
             posted: '3 days ago',
