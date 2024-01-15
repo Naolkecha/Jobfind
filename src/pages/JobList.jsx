@@ -4,15 +4,7 @@ import JobCard from '../components/JobCard';
 
 const JobList = () => {
     const jobs = [
-        {
-            job_id: 1,
-            posted: '2hr ago',
-            title: 'Senior Software Developer',
-            description: 'Join our dynamic team as a Senior Software Developer. You will lead development efforts, mentor junior developers, and design scalable software solutions. Collaborate with cross-functional teams to define, design, and ship new features. We are looking for someone with a passion for clean code, innovative problem-solving, and a strong grasp of best practices in software engineering.',
-            experience: 'Entry level',
-            salary: '25k',
-            type: 'Full time',
-        },
+      
         {
             job_id: 2,
             posted: '1 day ago',
