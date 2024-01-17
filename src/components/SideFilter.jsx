@@ -35,9 +35,7 @@ const SideFilter = () => {
             <option value="">$50k - $100k</option>
             <option value="">$100k+</option>
         </select>
-
         <p className='font-bold'>Experience level</p>
-
         {/* checkboxes */}
         <label className='flex items-center gap-2' >
             <input type="checkbox" />
@@ -49,7 +47,7 @@ const SideFilter = () => {
             />
             Mid level
 
-            
+
 
         </label>
         <label className='flex items-center gap-2'>
