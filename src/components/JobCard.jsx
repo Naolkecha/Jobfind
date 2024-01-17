@@ -5,7 +5,6 @@ const JobCard = ({ job }) => {
     const navigate = useNavigate();
 
     const handleNavigate = () => {
-        // Redirect to the job detail page, dynamically passing the job title or id
         navigate(`/job/${job.job_id}`);
     };
 
