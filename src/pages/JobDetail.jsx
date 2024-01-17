@@ -61,11 +61,6 @@ const JobDetail = () => {
             {/* Job Application Form */}
             <h2 className="text-xl font-semibold mb-4">Apply for this Job</h2>
             <form onSubmit={handleSubmit} className="space-y-4">
-               
-                {/* Resume Upload */}
-            
-
-                {/* Cover Letter */}
                 <div>
                     <label className="block text-gray-600 font-medium mb-1" htmlFor="coverLetter">
                         Cover Letter
@@ -84,12 +79,7 @@ const JobDetail = () => {
 
                 {/* Submit Button */}
                 <div className='flex justify-end'>
-                    {/* <button
-                        type="cancel"
-                        className="w-1/3 bg-red-500 text-white py-2 px-4 rounded-lg hover:bg-red-600"
-                    >
-                       Cancel
-                    </button> */}
+                  
                     <button
                         type="submit"
                         className="w-1/3 bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600"
