@@ -180,9 +180,6 @@ const AddJob = () => {
                         />
                     </div>
                     
-                    {/* Skills Input with Tag-like UI */}
-                 
-                    
                     <div className="col-span-2 flex justify-end">
                         <button
                             type="submit"
