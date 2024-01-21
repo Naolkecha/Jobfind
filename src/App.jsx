@@ -5,7 +5,6 @@ import './index.css';
 import Home from './pages/Home';
 import SignUp from './pages/SignUp';
 import Login from './pages/Login';
-// import "tailwindcss/tailwind.css";
 import JobList from './pages/JobList';
 import JobDetails from './pages/JobDetail';
 import AddJob from './pages/AddJob';
