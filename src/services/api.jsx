@@ -77,9 +77,7 @@ class Api {
         }
     }
 
-
     getJobsByEmployer = async () => {
-           
         const response = await this.api.get('/jobs');
         return response.data;
         
