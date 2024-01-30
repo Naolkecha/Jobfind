@@ -1,32 +1,28 @@
 import React from 'react';
 import SideFilter from '../components/SideFilter';
 import JobCard from '../components/JobCard';
+import api from '../services/api';
+import { useEffect, useState } from 'react';
 
 const JobList = () => {
-    const jobs = [
-     
-        {
-            job_id: 3,
-            posted: '3 days ago',
-            title: 'Backend Developer',
-            description: 'Looking for a Backend Developer to build and maintain robust, scalable server-side applications. The ideal candidate should have experience with REST API development, database design (both SQL and NoSQL), and cloud deployment. Your contributions will ensure seamless data management and smooth system performance.',
-            experience: 'Senior level',
-            salary: '30k',
-            type: 'Part time',
-        },
-        {
-            job_id: 4,
-            posted: '1 week ago',
-            title: 'Full-Stack Developer',
-            description: 'We need a Full-Stack Developer who is passionate about delivering end-to-end solutions. From crafting stunning UIs to designing efficient backend systems, you will play a pivotal role in developing our products. Prior experience with React, Node.js, and MongoDB is a plus. Join us and contribute to exciting projects in a collaborative environment.',
-            experience: 'Junior level',
-            salary: '22k',
-            type: 'Hybrid',
-        },
-    ];
+
+    const [jobs, setJobs] = useState([]);
+
+    useEffect(() => {
+        const fetchJobs = async () => {
+            try {
+                const response = await api.getJobs();
+                setJobs(response);
+            } catch (error) {
+                console.error('Error fetching jobs:', error);
+            }
+        };
+
+        fetchJobs();
+    }, []);
 
     return (
-        <div className='flex flex-col gap-4 p-4 h-screen bg-white overflow-hidden'>
+        <div className='flex flex-col gap-4 p-4  bg-white overflow-hidden'>
             {/* Search Bar */}
             <div className="flex items-center justify-center h-full sticky top-0 bg-white z-10">
                 <div className="bg-white bg-opacity-75 p-4 border-b flex w-full max-w-screen-md gap-3">

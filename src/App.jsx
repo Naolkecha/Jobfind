@@ -27,7 +27,6 @@ const App = () => {
         <Route path="/job/:id" element={<JobDetails />} />
         <Route path="/add-job" element={<AddJob />} />
         <Route path="/employer/jobs" element={<EmployerJobs />} />
-        
       </Routes>
     </div>
   );

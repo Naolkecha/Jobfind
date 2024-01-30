@@ -9,9 +9,9 @@ const Navbar = () => {
         <nav className=" bg-gray-300 p-4 ">
             <div className="md:mx-20 flex justify-between items-center   ">
                <div className='flex items-center justify-between w-full md:gap-10'>
-                <div className="text-black text-lg font-bold ">
+                {!menuOpen && <div className="text-black text-lg font-bold ">
                     <Link to="/">JobFind</Link>
-                </div>
+                </div>}
             <div className='hidden md:block'>
                 <ul className="flex space-x-4">
                     <li>
@@ -23,12 +23,11 @@ const Navbar = () => {
                     <li>
                         <Link to="/contact" className="text-black hover:text-blue-500">JOB LIST</Link>
                     </li>
-                    <li>
-                        <Link to="/contact" className="text-black hover:text-blue-500">JOB DETAILS</Link>
-                    </li>
+                    
                 </ul>
                
                 </div>
+                <div className='hidden md:block'>
                 <div className='flex items-center gap-3'>
 
                 <div className='flex justify-evenly gap-3'>
@@ -46,8 +45,11 @@ const Navbar = () => {
 
                 </div>
                 </div>
+                </div>
 
-            
+                <div className='md:hidden'>
+               <div className='flex flex-col items-center justify-center gap-3'>
+                <div className='md:hidden'>
                 <div className="md:hidden flex items-center justify-end ">
                     <button
                         className="text-black focus:outline-none"
@@ -69,6 +71,8 @@ const Navbar = () => {
                         </svg>
                     </button>
                 </div>
+                </div>
+
                 {menuOpen && (
                     <ul className="md:hidden flex flex-col space-y-4 mt-4">
                         <li>
@@ -80,9 +84,7 @@ const Navbar = () => {
                         <li>
                             <Link to="/contact" className="text-black hover:text-blue-500">JOB LIST</Link>
                         </li>
-                        <li>
-                            <Link to="/contact" className="text-black hover:text-blue-500">JOB DETAILS</Link>
-                        </li>
+                       
                         <li>
                         <button className='bg-blue-500 px-4 py-1 rounded-full text-white '>
                             POST A JOB
@@ -91,6 +93,8 @@ const Navbar = () => {
                     </ul>
                 )}
 
+</div>
+</div>
 
                 </div>
             </div>

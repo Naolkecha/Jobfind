@@ -3,9 +3,7 @@ import api from '../services/api';
 import UserContext from '../context/userContext';
 
 const Login = () => {
-    const {isLoggedin} = useContext(UserContext);
-
-    console.log('isLoggedin:', isLoggedin);
+   
 
     const [formData, setFormData] = useState({
         email: '',
@@ -36,16 +34,25 @@ const handleSubmit = async (e) => {
 
     try {
         const response = await api.login(data);
-        console.log('User logged in:', response);
+        
+       if (response.token) {
+            console.log('Login successful:', response);
+            localStorage.setItem('token', response.token);
+            localStorage.setItem('role', response.role);
 
-        // Save the token in local storage
-        localStorage.setItem('token', response['token']);
+            if (response.role === 'jobSeeker') {
+                window.location = '/jobs';
+            }
+            if (response.role === 'employer') {
+                window.location = '/employer/jobs';
+            }
 
+            
+        } else {
+            console.log('Login failed:', response);
+        }
         
         
-        // Redirect to the home page
-        window.location.href = '/';
-
 
     } catch (err) {
         if (err.response && err.response.data.errors) {

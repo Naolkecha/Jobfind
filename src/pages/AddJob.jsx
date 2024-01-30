@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import api from '../services/api';
 
 const AddJob = () => {
     const [jobDetails, setJobDetails] = useState({
@@ -42,7 +43,7 @@ const AddJob = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('/api/jobs', jobDetails);
+            const response = await api.addJob(jobDetails);
             console.log('Job added:', response.data);
             alert('Job added successfully!');
             setJobDetails({

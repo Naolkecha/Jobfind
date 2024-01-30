@@ -1,34 +1,53 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import AddJob from './AddJob';
+import api from '../services/api';
 
 const EmployerDashboard = () => {
     const [currentPage, setCurrentPage] = useState('jobsList');
     const [selectedJob, setSelectedJob] = useState(null);
     const [selectedApplicant, setSelectedApplicant] = useState(null);
+    const [jobs, setJobs] = useState([]);
 
-    // Mock Data for Jobs
-    const [jobs, setJobs] = useState([
-        {
-            id: 2,
-            title: 'Backend Developer',
-            company: 'Soft Innovations',
-            location: 'Remote',
-            minSalary: 6000,
-            maxSalary: 10000,
-            skillsRequired: ['Python', 'Django', 'REST APIs', 'SQL'],
-            description: 'Join our backend team to work on exciting projects.',
-            applicants: [
-                {
-                    id: 3,
-                    name: 'Michael Johnson',
-                    email: 'michael.johnson@example.com',
-                    skills: ['Python', 'Django', 'REST APIs', 'SQL'],
-                    cvLink: 'https://example.com/michael-cv.pdf',
-                    coverLetter: 'Backend development is my passion, and I strive to create scalable solutions.',
-                },
-            ],
-        },
-    ]);
+
+    useEffect(() => {
+        const fetchJobs = async () => {
+            try {
+                const response = await api.getJobsByEmployer();
+                
+                setJobs(response);
+            } catch (error) {
+                console.error('Error fetching jobs:', error);
+            }
+        }
+
+        fetchJobs();
+
+    }, [jobs]);
+
+
+    // // Mock Data for Jobs
+    //  = useState([
+    //     {
+    //         id: 2,
+    //         title: 'Backend Developer',
+    //         company: 'Soft Innovations',
+    //         location: 'Remote',
+    //         minSalary: 6000,
+    //         maxSalary: 10000,
+    //         skillsRequired: ['Python', 'Django', 'REST APIs', 'SQL'],
+    //         description: 'Join our backend team to work on exciting projects.',
+    //         applicants: [
+    //             {
+    //                 id: 3,
+    //                 name: 'Michael Johnson',
+    //                 email: 'michael.johnson@example.com',
+    //                 skills: ['Python', 'Django', 'REST APIs', 'SQL'],
+    //                 cvLink: 'https://example.com/michael-cv.pdf',
+    //                 coverLetter: 'Backend development is my passion, and I strive to create scalable solutions.',
+    //             },
+    //         ],
+    //     },
+    // ]);
 
     const handleDeleteJob = (jobId) => {
         if (window.confirm('Are you sure you want to delete this job?')) {
@@ -99,11 +118,13 @@ const EmployerDashboard = () => {
                 {currentPage === 'jobsList' && !selectedJob && (
                     <>
                         <h1 className="text-xl font-bold mb-3 px-2">Jobs Posted</h1>
-                        {jobs.length === 0 ? (
+                        {jobs === 0 ? (
                             <p>No jobs have been posted yet.</p>
                         ) : (
                             <div className="grid grid-cols-1 gap-2 px-2">
                                 {jobs.map((job) => (
+                                    console.log('job', job),
+                                   
                                     <div
                                         key={job.id}
                                         className="bg-white py-7 border-b cursor-pointer px-5"
@@ -121,10 +142,10 @@ const EmployerDashboard = () => {
                                             <strong>Location:</strong> {job.location}
                                         </p>
                                         <p>
-                                            <strong>Salary:</strong> ${job.minSalary} - ${job.maxSalary}
+                                            <strong>Salary:</strong> ${job.salaryRange.min} - ${job.salaryRange.max}
                                         </p>
                                         <p>
-                                            <strong>Applicants:</strong> {job.applicants.length}
+                                            <strong>Applicants:</strong> {job.applications ? job.applications.length : 0}    
                                         </p>
                                         </div>
                                     </div>
@@ -155,16 +176,16 @@ const EmployerDashboard = () => {
                             <strong>Location:</strong> {selectedJob.location}
                         </p>
                         <p>
-                            <strong>Salary:</strong> ${selectedJob.minSalary} - ${selectedJob.maxSalary}
+                            <strong>Salary:</strong> ${selectedJob.salaryRange.min} - ${selectedJob.salaryRange.max}
                         </p>
                         </div>
                         <p className="mb-4">{selectedJob.description}</p>
                         <p>Skills: {selectedJob.skillsRequired.join(', ')}</p>
 
                         {/* Applicants Section */}
-                        <h2 className="text-lg font-bold mt-4 mb-2">Applicants({selectedJob.applicants.length})</h2>
-                        {selectedJob.applicants.length > 0 ? (
-                            selectedJob.applicants.map((applicant) => (
+                        <h2 className="text-lg font-bold mt-4 mb-2">Applicants({selectedJob.applications.length})</h2>
+                        {selectedJob.applications.length > 0 ? (
+                            selectedJob.applications.map((applicant) => (
                                 <div
                                     key={applicant.id}
                                     className="bg-gray-50 p-4 rounded mb-4 "
@@ -174,7 +195,7 @@ const EmployerDashboard = () => {
                                         <strong>Email:</strong> {applicant.email}
                                     </p>
                                     <p>
-                                        <strong>Skills:</strong> {applicant.skills.join(', ')}
+                                        <strong>Skills:</strong> {applicant.skills ? applicant.skills.join(', ') : 'N/A'}
                                     </p>
                                     <p className="mb-2">
                                         <strong>Cover Letter:</strong> 
@@ -211,8 +232,6 @@ const EmployerDashboard = () => {
 
                 {/* Add Job Page */}
                 {currentPage === 'addJob' && (
-                 
-                        
                         <AddJob />
              
                 )}

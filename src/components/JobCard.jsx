@@ -3,9 +3,11 @@ import { useNavigate } from 'react-router-dom';
 
 const JobCard = ({ job }) => {
     const navigate = useNavigate();
-
+    const jobId = job._id;
+    
+    console.log('Job Salary:', job.salaryRange);
     const handleNavigate = () => {
-        navigate(`/job/${job.job_id}`);
+        navigate(`/job/${jobId}`);
     };
 
     return (
@@ -13,21 +15,25 @@ const JobCard = ({ job }) => {
             onClick={handleNavigate}
             className="bg-white bg-opacity-75 py-4 w-full gap-3 border-b border-gray-200 px-2 cursor-pointer hover:shadow-md hover:bg-gray-100 transition-shadow"
         >
-            <p className="text-xs">Posted {job.posted}</p>
+            <p className="text-xs">Posted {new Date(job.createdAt).toLocaleDateString()}</p>
             <h2 className="font-bold text-lg md:text-2xl">{job.title}</h2>
             <p className="text-base">{job.description}</p>
             <div className="flex justify-between py-2 pr-4">
                 <p className="text-sm">
-                    <strong>Experience:</strong> {job.experience}
+                    <strong>Company:</strong> {job.company}
+                </p>
+                {/* <p className="text-sm">
+                    <strong>Location:</strong> {job.location}
+                </p> */}
+                <p className="text-sm">
+                    <strong>Employment Type:</strong> {job.employmentType}
                 </p>
                 <p className="text-sm">
-                    <strong>Salary:</strong> {job.salary}
-                </p>
-                <p className="text-sm">
-                    <strong>Job type:</strong> {job.type}
+                    <strong>Salary Range:</strong> ${job.salaryRange.min} - ${job.salaryRange.max}
                 </p>
             </div>
         </div>
+    
     );
 };
 

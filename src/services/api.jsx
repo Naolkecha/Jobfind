@@ -26,6 +26,14 @@ class Api {
         }
     }
 
+    registerEmployer = async (data) => {
+       
+            console.log('data', data);
+            const response = await axios.post('http://localhost:5000/api/users/register-employer', data);
+            return response;
+       
+    }
+
 
   login = async (data) => {
         
@@ -38,12 +46,58 @@ class Api {
         }
     }
 
+    getJobs = async () => {
+        try {
+            const response = await this.api.get('/jobs');
+            console.log('response', response.data);
+            return response.data;
+        } catch (error) {
+            console.error(error);
+        }
+    }
 
- 
+    getJob = async (id) => {
+        try {
+            console.log('jobId', id);
+            const response = await this.api.get(`/jobs/${id}`);
+            console.log('response', response.data);
+            return response.data;
+        } catch (error) {
+            console.error(error);
+        }
+    }
 
-    
+    applyJob = async (jobId, data) => {
+        try {
+            const response = await this.api.post(`/applications/${jobId}`, data);
+            console.log('response', response);
+            return response;
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
+
+    getJobsByEmployer = async () => {
+           
+        const response = await this.api.get('/jobs');
+        return response.data;
+        
+    }
+
+    addJob = async (data) => {
+        try {
+            const response = await this.api.post('/jobs', data);
+            console.log('response', response.data);
+            return response.data;
+        } catch (error) {
+            console.error(error);
+        }
+    }
 
 }
+
+
 
 
 const api = new Api();
