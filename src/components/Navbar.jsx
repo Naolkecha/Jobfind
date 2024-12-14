@@ -2,12 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 
-
-
 const Navbar = () => {
     const [menuOpen, setMenuOpen] = React.useState(false);
-
-
     const navigate = useNavigate();
     return (
         <nav className=" bg-gray-300 p-4 ">

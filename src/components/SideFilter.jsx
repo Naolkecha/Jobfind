@@ -1,11 +1,9 @@
 import React from "react";
 
 const SideFilter = () => {
-
     return (
     <div className="relative">
         <div className='flex flex-col gap-2  py-2 px-5 rounded-md h-full'>
-        {/* Left side filter */}
         <p className='font-bold'>Job type</p>
         {/* check boxes here */}
         <label className='flex items-center gap-2'>
@@ -56,7 +54,6 @@ const SideFilter = () => {
         </label>
     </div>
     </div>
-
     );
 }
 
